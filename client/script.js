@@ -73,10 +73,35 @@ function getTodo() {
     .then(({data}) => {
         $('#todolist').empty()
         let i = 0
-        data.data.forEach(todo => {
-            if(i % 3 == 0) {
-                $('#todolist').append(`
-                    <div class="card-deck" id="todo${Math.floor(i / 3)}">
+        if(!data.data.length){
+            $('#todolist').append(`
+            <h1>Create Your New Project</h1>
+            `)
+        } else {
+            data.data.forEach(todo => {
+                if(i % 3 == 0) {
+                    $('#todolist').append(`
+                        <div class="card-deck" id="todo${Math.floor(i / 3)}">
+                            <div class="card">
+                                <div class="card-body">
+                                <h5 class="card-title">${todo.name}</h5>
+                                <p class="card-text">${todo.description}</p>
+                                </div>
+                                <div class="card-footer">
+                                <div class="container">
+                                    <div class="row">
+                                        <small class="text-muted"><a href="#" class="updatetodo" onclick="updateTodo('${todo._id}', '${todo.name}')">Update |</a></small>
+                                        <small class="text-muted"><a href="" class="deleteTodo" onclick="deleteTodo('${todo._id}')">| Delete</a></small>
+                                    </div>
+                                </div>
+                                <small class="text-muted">Status:${todo.status}, </small>
+                                <small class="text-muted">Due Date:${todo.due_date.substring(0, 10)}</small>
+                                </div>
+                            </div>
+                        </div>
+                    `)
+                } else {
+                    $(`#todo${Math.floor(i / 3)}`).append(`
                         <div class="card">
                             <div class="card-body">
                             <h5 class="card-title">${todo.name}</h5>
@@ -93,35 +118,69 @@ function getTodo() {
                             <small class="text-muted">Due Date:${todo.due_date.substring(0, 10)}</small>
                             </div>
                         </div>
-                    </div>
-                `)
-            } else {
-                $(`#todo${Math.floor(i / 3)}`).append(`
-                    <div class="card">
-                        <div class="card-body">
-                        <h5 class="card-title">${todo.name}</h5>
-                        <p class="card-text">${todo.description}</p>
-                        </div>
-                        <div class="card-footer">
-                        <div class="container">
-                            <div class="row">
-                                <small class="text-muted"><a href="#" class="updatetodo" onclick="updateTodo('${todo._id}', '${todo.name}')">Update |</a></small>
-                                <small class="text-muted"><a href="" class="deleteTodo" onclick="deleteTodo('${todo._id}')">| Delete</a></small>
+                        `)
+                    }
+                i++ 
+            })
+            $('.deleteTodo').click(function(event) {
+                event.preventDefault()
+            })
+            $('.updatetodo').click(function(event) {
+                event.preventDefault()
+            })
+        }
+
+        $('#searchInput').keydown(function(){
+            $('#todolist').empty()
+            let i = 0
+            let dataSearch = data.data.filter( name => {
+              const regex = new RegExp(`.*${$('#searchInput').val()}.*`, 'i');
+              return regex.test (name.name) 
+            })
+            dataSearch.forEach(todo => {
+                if(i % 3 == 0) {
+                    $('#todolist').append(`
+                        <div class="card-deck" id="todo${Math.floor(i / 3)}">
+                            <div class="card">
+                                <div class="card-body">
+                                <h5 class="card-title">${todo.name}</h5>
+                                <p class="card-text">${todo.description}</p>
+                                </div>
+                                <div class="card-footer">
+                                <div class="container">
+                                    <div class="row">
+                                        <small class="text-muted"><a href="#" class="updatetodo" onclick="updateTodo('${todo._id}', '${todo.name}')">Update |</a></small>
+                                        <small class="text-muted"><a href="" class="deleteTodo" onclick="deleteTodo('${todo._id}')">| Delete</a></small>
+                                    </div>
+                                </div>
+                                <small class="text-muted">Status:${todo.status}, </small>
+                                <small class="text-muted">Due Date:${todo.due_date.substring(0, 10)}</small>
+                                </div>
                             </div>
                         </div>
-                        <small class="text-muted">Status:${todo.status}, </small>
-                        <small class="text-muted">Due Date:${todo.due_date.substring(0, 10)}</small>
+                    `)
+                } else {
+                    $(`#todo${Math.floor(i / 3)}`).append(`
+                        <div class="card">
+                            <div class="card-body">
+                            <h5 class="card-title">${todo.name}</h5>
+                            <p class="card-text">${todo.description}</p>
+                            </div>
+                            <div class="card-footer">
+                            <div class="container">
+                                <div class="row">
+                                    <small class="text-muted"><a href="#" class="updatetodo" onclick="updateTodo('${todo._id}', '${todo.name}')">Update |</a></small>
+                                    <small class="text-muted"><a href="" class="deleteTodo" onclick="deleteTodo('${todo._id}')">| Delete</a></small>
+                                </div>
+                            </div>
+                            <small class="text-muted">Status:${todo.status}, </small>
+                            <small class="text-muted">Due Date:${todo.due_date.substring(0, 10)}</small>
+                            </div>
                         </div>
-                    </div>
-                `)
-            }
-            i++ 
-        })
-        $('.deleteTodo').click(function(event) {
-            event.preventDefault()
-        })
-        $('.updatetodo').click(function(event) {
-            event.preventDefault()
+                        `)
+                    }
+                i++ 
+            })
         })
     })
     .catch(err => {
@@ -234,6 +293,7 @@ function createProject(input) {
     })
     .then(data => {
         console.log(data);
+        getTodo()
     })
     .catch(err => {
         console.log(err);
@@ -247,10 +307,12 @@ function isLogin() {
       $('#header').show()
       $('#g-signout').show()
       $('#content').show()
+      $('.footer').hide()
     } else {
       $('#loginpage').show()
       $('#header').hide()
       $('#g-signout').hide()
       $('#content').hide()
+      $('.footer').show()
     }
 }

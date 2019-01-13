@@ -52,8 +52,8 @@ class TodoController {
 
     static delete(req, res) {
         let _id = req.params.id
-
-        Todo.findOneAndDelete({_id})
+        let user = req.user._id
+        Todo.findOneAndDelete({_id, user})
             .then(result => {
                 console.log(result);
                 res.json(result)
