@@ -12,10 +12,10 @@ class AuthorizationController {
         let {username, email, password} = req.body
         User.create({username, email, password})
             .then(user => {
-                let {_id, email} = user
-                let token = jwt.sign({_id, email}, process.env.JWT_SECRET)
+                // let {_id, email} = user
+                // let token = jwt.sign({_id, email}, process.env.JWT_SECRET)
                 // res.status(201).json(user)
-                res.status(201).json(token)
+                res.status(201).json(user)
             })
             .catch(err => {
                 console.log(err);
@@ -31,7 +31,7 @@ class AuthorizationController {
             .then(user => {
                 let {_id, email} = user
                 if(checkHash(password, user.password)) {
-                    jwt.sign({_id, email}, process.env.JWT_SECRET)
+                    let token = jwt.sign({_id, email}, process.env.JWT_SECRET)
                     // res.status(201).json(user)
                     res.status(201).json(token)
                 }

@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/register', AuthorizationController.register)
+router.post('/login', AuthorizationController.login)
 router.post('/signin/google',AuthorizationController.signInGoogle)
 router.use('/todo', todoRouter)
 router.use('/user', userRouter);
