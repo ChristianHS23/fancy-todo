@@ -5,15 +5,13 @@ const {hashPassword} = require('../helpers')
 var userSchema = new Schema({
     username: String,
     password: String,
-    email: String,
-    todolists: [{
-        type: Schema.Types.ObjectId ,
-        ref : 'Todo'
-    }]
+    email: String
 })
 
 userSchema.pre('save', function(next) {
-    this.password = hashPassword(this.password)
+    if(this.password) {
+        this.password = hashPassword(this.password)
+    }
     next()
 })
 

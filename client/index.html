@@ -1,22 +1,26 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="google-signin-client_id" content="817985586817-drg8a084t1bqid2our0gdl2mp4hqf3lr.apps.googleusercontent.com">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <!--CSS-->
-    <style>
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="google-signin-client_id" content="817985586817-drg8a084t1bqid2our0gdl2mp4hqf3lr.apps.googleusercontent.com">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+  <!--CSS-->
+  <style>
     footer {
       background-color: #333;
       color: #fff;
-      padding: 30px 0;
-      position:absolute;
-      width:100%;
-      z-index: inherit 5;
+      padding: 25px 0;
     }
+    .footer { 
+    position: absolute; 
+    left: 0 ; right: 0; bottom: 0; 
+    height:[footer-height] 
+}
     .container li, .container2 li {
         position: relative;
         display: block;
@@ -33,164 +37,262 @@
       font-family: 'Raleway', sans-serif;
       text-transform: uppercase;
       font-size: 11px;
-    
     }
     </style>
-    <title>Make It Work!</title>
-  </head>
-  <body>
-     <header id="header">
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-              </ul>
-              <form class="form-inline my-2 my-lg-0">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                  <button id="g-signout" class="btn btn-outline-success my-2 my-sm-0" onclick="signOut();" type="button">Sign Out</button>
-              </form>
-            </div>
-          </nav>
-     </header>
+  <title>Make It Work!</title>
+</head>
 
-    <div class="container-fluid" id="loginpage" style="background-image: url('https://pixabay.com/get/e836b20f2af1033ed1534705fb0938c9bd22ffd41cb5164293f2c47ea0/water-1330252_1920.jpg')">
-        <br><br><br><br><br>
-        <div class="row justify-content-center">
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-          
-                <li class="nav-item">
-                  <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Sign in</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Register</a>
-                </li>
-              </ul>
-        </div>
-        <div class="row justify-content-center">
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                        <div class="form-group">
-                          <label for="InputEmail1">Email address</label>
-                          <input type="email" class="form-control" name="email" id="loginEmail" aria-describedby="emailHelp" placeholder="Enter email">
-                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                        <div class="form-group">
-                          <label for="InputPassword1">Password</label>
-                          <input type="password" name="password" class="form-control" id="loginPassword" placeholder="Password">
-                        </div>
-                        <div class="container">
-                          <div class="row">
-                            <div class="col-sm">
-                              <button type="submit" id="loginButton" class="btn btn-primary">Login</button>
-                            </div>
-                            <div class="col-sm">
-                              <div id="g-signin" class="g-signin2" data-onsuccess="onSignIn"></div>
-                            </div>
-                          </div>
-                        </div>
-                </div>
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                        <div class="form-group">
-                            <label for="registerUsername">Username</label>
-                            <input type="text" name="username" class="form-control" id="registerUsername" placeholder="Enter Username">
-                        </div>
-                        <div class="form-group">
-                          <label for="registerEmail1">Email address</label>
-                          <input type="email" name="email" class="form-control" id="registerEmail" aria-describedby="emailHelp" placeholder="Enter email">
-                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword">Password</label>
-                          <input type="password" name="password" class="form-control" id="registerPassword" placeholder="Password">
-                        </div>
-                        <div class="form-group form-check">
-                          <input type="checkbox" class="form-check-input" id="agreeCheck">
-                          <label class="form-check-label" for="agreeCheck">I agree with all term and condition</label>
-                        </div>
-                        <button type="submit" id="registerButton" class="btn btn-primary">Submit</button>
-                </div>
-              </div>
-        </div>
-        <br><br><br><br><br>
+<body>
+  <header id="header">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd">
+      <a class="navbar-brand" href="#">Make It Work</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#" id="home">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="project">Project <span class="sr-only">(current)</span></a>
+          </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button id="g-signout" class="btn btn-outline-success my-2 my-sm-0" onclick="signOut();" type="button">Sign
+            Out</button>
+        </form>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container-fluid" id="loginpage" style="background-image: url('./Public/background.jpg') ">
+    <br><br><br><br>
+    <div class="row justify-content-center">
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+        <li class="nav-item">
+          <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home"
+            aria-selected="true">Sign in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile"
+            aria-selected="false">Register</a>
+        </li>
+      </ul>
     </div>
+    <div class="row justify-content-center">
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+          <div class="form-group">
+            <label for="InputEmail1">Email address</label>
+            <input type="email" class="form-control" name="email" id="loginEmail" aria-describedby="emailHelp"
+              placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="InputPassword1">Password</label>
+            <input type="password" name="password" class="form-control" id="loginPassword" placeholder="Password">
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <button type="submit" id="loginButton" class="btn btn-primary">Login</button>
+              </div>
+              <div class="col-sm">
+                <div id="g-signin" class="g-signin2" data-onsuccess="onSignIn"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+          <div class="form-group">
+            <label for="registerUsername">Username</label>
+            <input type="text" name="username" class="form-control" id="registerUsername" placeholder="Enter Username">
+          </div>
+          <div class="form-group">
+            <label for="registerEmail1">Email address</label>
+            <input type="email" name="email" class="form-control" id="registerEmail" aria-describedby="emailHelp"
+              placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="registerPassword">Password</label>
+            <input type="password" name="password" class="form-control" id="registerPassword" placeholder="Password">
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="agreeCheck">
+            <label class="form-check-label" for="agreeCheck">I agree with all term and condition</label>
+          </div>
+          <button type="submit" id="registerButton" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+    <br><br><br><br><br>
+  </div>
 
-    <div id="content" class="container-fluid">
-      <div class="jumbotron">
-          <h1 class="display-4">Hello, world!</h1>
+  <div id="content" class="container-fluid">
+    
+  </div>  
+  <!-- <footer class="footer">
+    <div class="container2">
+      <ul>
+        <li>
+          <p>e-mail : christian.sihotang23@gmail.com</p>
+        </li>
+        <li>
+          <p>Phone : +6281927284401</p>
+        </li>
+      </ul>
+    </div>
+  </footer> -->
+
+  
+  <!-- Optional JavaScript -->
+  <script src="/script.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!-- google sign in -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<!-- Bootstrap Date-Picker Plugin -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+
+  <script>
+
+    isLogin()
+
+    $('#content').append(`
+        <div class="jumbotron" >
+          <h1 class="display-4">Make It Work</h1>
           <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
           <hr class="my-4">
           <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
           <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </div>
+      `)
+
+    $('#registerButton').click(function (event) {
+      let username = $('#registerUsername').val()
+      let email = $('#registerEmail').val()
+      let password = $('#registerPassword').val()
+      let user = { username, email, password }
+      event.preventDefault()
+      register(user)
+      $('#registerUsername').val('');
+      $('#registerEmail').val('');
+      $('#registerPassword').val('');
+    })
+
+    $('#home').click(function (event) {
+      event.preventDefault()
+      $('#content').empty()
+      $('#content').append(`
+          <div class="jumbotron" >
+            <h1 class="display-4">Make It Work</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <hr class="my-4">
+            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+          </div>
+        `)
+    })
+
+    $('#project').click(function (event) {
+      event.preventDefault()
+      $('#content').empty()
+      $('#content').append(`
+      <div class="row">
+        <div class="col-8" id="todolist">
+            
+        </div>
+        <div class="col-4" id="cutodo">
+        <p>
+          <a class="btn btn-primary" id="createproject" data-toggle="collapse" href="#create" role="button"
+            aria-expanded="false" aria-controls="create">
+            Create New Project
+          </a>
+        </p>
+        <div class="collapse" id="create">
+          <div class="card card-body">
+            <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                      <label for="inputProject">Project Name</label>
+                      <input type="text" class="form-control" name="name" id="projectName" aria-describedby="projectHelp"
+                        placeholder="Project name">
+                      <small id="projectHelp" class="form-text text-muted">Enter your project name</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="projectDescription">Description</label>
+                      <textarea class="form-control" id="projectDescription" rows="5"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label" for="date">Due Date</label>
+                      <input class="form-control" id="projectdueDate" name="date" placeholder="MM/DD/YYY" type="text"/>
+                    </div>
+                    <div class="form-group"> 
+                      <button class="btn btn-primary " id="createprojectButton" name="submit" type="submit">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <footer>
-        <div class="container2">
-          <ul>
-           <li><p>e-mail : christian.sihotang23@gmail.com</p></li>
-           <li><p>Phone : +6281927284401</p></li>
-          </ul>
-        </div>      
-      </footer> 
-    <!-- Optional JavaScript -->
-    <script src="/script.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-     <!-- google sign in -->
-     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      `)
 
-
-    <script>
-
-      isLogin()
-      $('#registerButton').click(function(event) {
-        let username = $('#registerUsername').val()
-        let email = $('#registerEmail').val()
-        let password = $('#registerPassword').val()
-        let user = {username, email, password}
-        event.preventDefault()
-        register(user)
-        $('#registerUsername').val('');
-        $('#registerEmail').val('');
-        $('#registerPassword').val('');
+      $(document).ready(function(){
+        var date_input=$('input[name="date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        var options={
+          format: 'mm/dd/yyyy',
+          container: container,
+          todayHighlight: true,
+          autoclose: true,
+        };
+        date_input.datepicker(options);
       })
-  
-      $('#loginButton').click(function(event) {
-        let email = $('#loginEmail').val()
-        let password = $('#loginPassword').val()
-        let user = {email, password}
+      
+      $('#createprojectButton').click(function(event) {
         event.preventDefault()
-        login(user)
-        $('#loginEmail').val('');
-        $('#loginPassword').val('');
+        let name = $('#projectName').val()
+        let due_date = $('#projectdueDate').val()
+        let description = $('#projectDescription').val()
+        let input = {name, due_date, description}
+        createProject(input)
+        getTodo()
+        $('#projectName').val('')
+        $('#projectdueDate').val('')
+        $('#projectDescription').val('')
       })
-  
-      </script>
-  </body>
+      getTodo()
+    })
+
+    $('#loginButton').click(function (event) {
+      let email = $('#loginEmail').val()
+      let password = $('#loginPassword').val()
+      let user = { email, password }
+      event.preventDefault()
+      login(user)
+      $('#loginEmail').val('');
+      $('#loginPassword').val('');
+    })
+
+
+  </script>
+</body>
+
 </html>

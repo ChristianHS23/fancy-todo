@@ -4,7 +4,10 @@ var Schema = mongoose.Schema
 var todoSchema = new Schema({
     name : String,
     description : String,
-    status : String,
+    status : {
+        type: String,
+        default: 'ongoing'
+    },
     due_date : Date,
     user : {
         type: Schema.Types.ObjectId,

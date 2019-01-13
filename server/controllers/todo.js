@@ -16,9 +16,9 @@ class TodoController {
     }
 
     static create(req, res) {
-        let {name, description, status, due_date} = req.body
+        let {name, description, due_date} = req.body
         let user = req.user._id
-        let input = {name, description, status, due_date, user}
+        let input = {name, description, due_date, user}
         Todo.create(input)
             .then(data => {
                 console.log(data);

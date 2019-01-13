@@ -33,7 +33,7 @@ class AuthorizationController {
                 if(checkHash(password, user.password)) {
                     let token = jwt.sign({_id, email}, process.env.JWT_SECRET)
                     // res.status(201).json(user)
-                    res.status(201).json(token)
+                    res.status(200).json(token)
                 }
             })
             .catch(err => {
