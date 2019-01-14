@@ -32,6 +32,7 @@ function login(user) {
     })
     .then(({ data }) => {
         console.log(data)
+        // alertify.success("Berhasil")
         localStorage.setItem('token', data)
         isLogin()
     })
